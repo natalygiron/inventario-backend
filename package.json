@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon ./src/api/v1/app.js",
     "start": "node ./src/api/v1/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
