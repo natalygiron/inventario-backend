@@ -2,8 +2,16 @@ const express = require('express')
 const app = express()
 
 const PORT = process.env.PORT || 3000
-const sequelize = require('../../config/db')
+const sequelize = require('../../config/db.config')
 
+const db = require("./models");
+db.sequelize.sync();
+
+// drop existing tables and re-sync database
+db.sequelize.sync({ force: true }).then(() => {
+  console.log("Drop and re-sync db.");
+});
+//
 
 app.get('/', function (req, res) {
   res.send('Hello World')
