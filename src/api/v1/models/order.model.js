@@ -13,6 +13,8 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.DECIMAL(6,2),
         allowNull: false
       },
+      supplierId: Sequelize.INTEGER,
+      userId: Sequelize.INTEGER,
     });
     return Order;
   };

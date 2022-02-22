@@ -24,13 +24,15 @@ module.exports = (sequelize, Sequelize) => {
         defaultValue: true
       },
       price: {
-          type: Sequelize.DECIMAL,
+          type: Sequelize.DECIMAL(8,2),
           allowNull: false
       },
       stock: {
           type: Sequelize.INTEGER,
           allowNull: false
-      }
+      },
+      categoryId: Sequelize.INTEGER,
+      supplierId: Sequelize.INTEGER,
     });
     
     return Product;

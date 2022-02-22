@@ -8,9 +8,9 @@ const db = require("./models");
 db.sequelize.sync();
 
 // drop existing tables and re-sync database
-db.sequelize.sync({ force: true }).then(() => {
+/* db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
-});
+}); */
 //
 
 app.get('/', function (req, res) {
