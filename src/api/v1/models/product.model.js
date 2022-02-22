@@ -1,5 +1,3 @@
-const Category = require("./category.model.js")
-
 module.exports = (sequelize, Sequelize) => {
     const Product = sequelize.define("product", {
       id: {

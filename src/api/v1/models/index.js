@@ -21,12 +21,14 @@ db.orders = require("./order.model.js")(sequelize, Sequelize);
 db.users = require("./user.model.js")(sequelize, Sequelize);
 db.suppliers = require("./supplier.model.js")(sequelize, Sequelize);
 db.categories = require("./category.model.js")(sequelize, Sequelize);
+db.orderlines = require("./orderline.model.js")(sequelize, Sequelize);
 
 const Category = db.categories; 
 const Product = db.products;
 const Supplier = db.suppliers;
 const Order = db.orders;
 const User = db.users;
+const OrderLine = db.orderlines;
 
 Category.hasMany(Product, {foreignKey: 'categoryId', sourceKey: 'id'});
 Product.belongsTo(Category, {foreignKey: 'categoryId', targetKey: 'id'});
@@ -34,12 +36,13 @@ Product.belongsTo(Category, {foreignKey: 'categoryId', targetKey: 'id'});
 Supplier.hasMany(Product, {foreignKey: "supplierId", sourceKey: "id"  })
 Product.belongsTo(Supplier, {foreignKey: 'supplierId', targetKey: 'id'});
 
-Supplier.hasMany(Order, {foreignKey: "supplierId", sourceKey: "id"});
-Order.belongsTo(Supplier, {foreignKey: "supplierId", targetKey: "id"})
+Order.hasMany(OrderLine, {foreignKey: "orderId", sourceKey: "id"});
+OrderLine.belongsTo(Order, {foreignKey: "orderId", targetKey: "id"});
+
+Product.hasMany(OrderLine, {foreignKey: "productId", sourceKey: "id"});
+OrderLine.belongsTo(Product, {foreignKey: 'productId',targetKey: "id"});
 
 User.hasMany(Order, {foreignKey: "userId", sourceKey: "id"});
 Order.belongsTo(User, {foreignKey: "userId", targetKey: "id"})
-
-
 
 module.exports = db;
